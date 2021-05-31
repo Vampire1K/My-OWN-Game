@@ -17,10 +17,12 @@ class Form {
 
   display(){
     this.title.html("Gioco di corse automobilistiche");
+    this.title.style('color',"red")
     this.title.position(displayWidth/2 - 50, 0);
 
     this.input.position(displayWidth/2 - 40 , displayHeight/2 - 80);
     this.button.position(displayWidth/2 + 30, displayHeight/2);
+    this.button.style('background-color', "red")
     this.reset.position(displayWidth-100,20);
 
     this.button.mousePressed(()=>{
@@ -32,6 +34,7 @@ class Form {
       player.update();
       player.updateCount(playerCount);
       this.greeting.html("Ciao " + player.name)
+      this.greeting.style('color',"red")
       this.greeting.position(displayWidth/2 - 70, displayHeight/4);
     });
     

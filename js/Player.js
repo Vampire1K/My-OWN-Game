@@ -34,14 +34,13 @@ class Player {
       distance:this.distance,
       place: this.place,
       xPos: this.xPos,
-      vampire : this.vampire
     });
   }
 
   // player.UpdateVampire(3)
 
   static UpdateVampire(vplayer){
-    database.ref('vampirePlayer').update({
+    database.ref('/').update({
       vampirePlayer : vplayer
     });
   }

@@ -29,19 +29,19 @@ class Game {
               form.display();
             }
         
-            /*car1 = createSprite(100,200);
-            car1.debug = true;
-            car1.addImage("car1",car1_img);
-            car2 = createSprite(300,200);
-            car2.debug = true;
-            car2.addImage("car2",car2_img);
-            car3 = createSprite(500,200);
-            car3.debug = true;
-            car3.addImage("car3",car3_img);
-            car4 = createSprite(700,200);
-            car4.debug = true;
-            car4.addImage("car4",car4_img);
-            cars = [car1, car2, car3, car4]; */
+            p1 = createSprite(100,200);
+            //p1.debug = true;
+            //p1.addImage("car1",car1_img);
+            p2 = createSprite(300,200);
+            //p2.debug = true;
+            //p2.addImage("car2",car2_img);
+            p3 = createSprite(500,200);
+           //p3.debug = true;
+           // p3.addImage("car3",car3_img);
+            p4 = createSprite(700,200);
+            //p4.debug = true;
+            //p4.addImage("car4",car4_img);
+            players = [p1, p2,p3, p4]; 
 
             incidentata = false;
           }
@@ -175,24 +175,52 @@ class Game {
       // ------------------------------------------Vampire play-------------------------------------------//
 
       play(){
-
-        Player.getVampire();
-        if(vampire===0){
-          var rand= Math.round(random(1,4));
-          Player.UpdateVampire (rand);
-        }
-        else {
-          console.log(vampire);
-        }
-
-
-        // random number to decide Klous
-
-
+       console.log("ola");
+       
         
-
+       form.hide();
         
+       Player.getPlayerInfo();
+
+         //var display_position = 100;
+       if(allPlayers!== undefined){  
+        
+        //index of the array
+        var index = 0;
+        var x = 0;
+        var y=0;
+  
+        for(var plr in allPlayers){
+          //add 1 to the index for every loop
+          index = index + 1 ;
+  
+          //position the players a little away from each other in x direction
+          x = x + 200;
+          y = displayHeight - allPlayers[plr].distance ;
+          //use data form the database to display the cars in y direction
+          //y = displayHeight - allPlayers[plr].distance;
+          players[index-1].x = x;
+          players[index-1].y = y;
+  
+          if (index === player.index){
+            players[index - 1].shapeColor = "red";
+            camera.position.x = displayWidth/2;
+            camera.position.y = players[index-1].y
+          }
+         
+          //textSize(15);
+          //text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,display_position)
+        }
+  
       }
+  
+      if(keyIsDown(UP_ARROW) && player.index !== null){
+        player.distance +=50
+        player.update();
+      }
+  
+      drawSprites();
+  }
 
 
 

@@ -8,7 +8,7 @@ var database;
 
 var form, player, game;
 
-var cars, car1, car2, car3, car4;
+var players, p1, p2, p3, p4;
 var track, car1_img, car2_img, car3_img, car4_img;
 
 var imgF;
@@ -63,15 +63,15 @@ function setup(){
   game.getState();
   game.start();
 
-  for(i=0; i<5; i++){
-    obsWidth = random(200,950)
-    obsHeight = random(-height*4, height-300)
+  // for(i=0; i<5; i++){
+  //   obsWidth = random(200,950)
+  //   obsHeight = random(-height*4, height-300)
   
-    Obstacle = createSprite(obsWidth, obsHeight);
-    Obstacle.addImage (imgF);
+  //   Obstacle = createSprite(obsWidth, obsHeight);
+  //   Obstacle.addImage (imgF);
 
-    ObstacleGroup.add(Obstacle)
-  }
+  //   ObstacleGroup.add(Obstacle)
+  // }
 
   
 
@@ -81,7 +81,7 @@ function setup(){
 
 function draw(){
    //start the game
-   background(200, 200, 255);
+   background(0);
 
    //start the game
    if (playerCount === 4 && finishedPlayers === 0 ) {
@@ -90,7 +90,15 @@ function draw(){
  
    //start the game for real
    if (gameState === 1) {
-     game.play();
+    Player.getVampire();
+    if(vampire===0){
+      var rand= Math.round(random(1,4));
+      Player.UpdateVampire (rand);
+
+    }
+    else {
+      console.log(vampire);} 
+    game.play();
    }
 
    if(finishedPlayers === 4){
