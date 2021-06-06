@@ -25,6 +25,9 @@ var finishedPlayers;
 
 var bronz, gold, silver;
 
+var obstacleImg1,obstacleImg2,obstacleImg3,obstacleImg4;
+
+
 
 
 var vampire;
@@ -43,6 +46,18 @@ function preload(){
   bronz = loadImage("../images/bronze.png");
   gold = loadImage("../images/gold.png");
   silver= loadImage("../images/silver.png");
+
+  obstacleImg1 = loadImage("../images/ghost1.png");
+ 
+  obstacleImg4 = loadImage("../images/saet.jpg");
+
+  
+
+
+  
+
+
+
 
    imgF = loadImage("../images/f1.png");
 }
@@ -63,15 +78,26 @@ function setup(){
   game.getState();
   game.start();
 
-  // for(i=0; i<5; i++){
-  //   obsWidth = random(200,950)
-  //   obsHeight = random(-height*4, height-300)
+  for(i=0; i<5; i++){
+    obsWidth = random(200,950)
+    obsHeight = random(-height*4, height-300)
   
-  //   Obstacle = createSprite(obsWidth, obsHeight);
-  //   Obstacle.addImage (imgF);
-
-  //   ObstacleGroup.add(Obstacle)
-  // }
+    Obstacle = createSprite(obsWidth, obsHeight);
+    var rand_obs = Math.round(random(1,2));
+    
+    switch(rand_obs){
+      case 1: Obstacle.addImage (obstacleImg1);
+              break;
+      // case 2: Obstacle.addImage (obstacleImg2);
+      //         break;
+      // case 3: Obstacle.addImage (obstacleImg3);
+      //         break;
+      case 4: Obstacle.addImage (obstacleImg4);
+              break;
+            
+    }
+    ObstacleGroup.add(Obstacle);
+  }
 
   
 
@@ -81,7 +107,7 @@ function setup(){
 
 function draw(){
    //start the game
-   background(0);
+   background(255);
 
    //start the game
    if (playerCount === 4 && finishedPlayers === 0 ) {

@@ -189,7 +189,7 @@ class Game {
         var index = 0;
         var x = 0;
         var y=0;
-  
+        var display_position =100;
         for(var plr in allPlayers){
           //add 1 to the index for every loop
           index = index + 1 ;
@@ -207,9 +207,15 @@ class Game {
             camera.position.x = displayWidth/2;
             camera.position.y = players[index-1].y
           }
-         
-          //textSize(15);
-          //text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,display_position)
+          display_position +=30;
+          textSize(15);
+          text(allPlayers[plr].name, displayWidth-250,display_position)
+          var bloodX =displayWidth-300;
+          for(var b=0;b<allPlayers[plr].life;b++){
+            var bloodbank = createSprite(bloodX,display_position,20,20);
+            bloodX += 50;
+            bloodbank.shapeColor="red";
+          }
         }
   
       }

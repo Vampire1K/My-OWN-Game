@@ -5,6 +5,7 @@ class Player {
     this.xPos = 0;
     this.name = null;
     this.place = 0;  
+    this.life = 3;
   }
 
   getCount(){
@@ -34,6 +35,7 @@ class Player {
       distance:this.distance,
       place: this.place,
       xPos: this.xPos,
+      life : this.life
     });
   }
 
