@@ -27,6 +27,8 @@ var bronz, gold, silver;
 
 var obstacleImg1,obstacleImg2,obstacleImg3,obstacleImg4;
 
+var GirlImg, vampImg1;
+
 
 
 
@@ -48,18 +50,15 @@ function preload(){
   silver= loadImage("../images/silver.png");
 
   obstacleImg1 = loadImage("../images/ghost1.png");
+  obstacleImg2 = loadImage("../images/Bone.jpg");
  
   obstacleImg4 = loadImage("../images/saet.jpg");
 
-  
+  girlImg = loadImage("../images/Girll.png");
 
 
-  
-
-
-
-
-   imgF = loadImage("../images/f1.png");
+  imgF = loadImage("../images/f1.png");
+  vampimg1 = loadImage("../images/vamp.png");
 }
 
 function setup(){
@@ -88,8 +87,8 @@ function setup(){
     switch(rand_obs){
       case 1: Obstacle.addImage (obstacleImg1);
               break;
-      // case 2: Obstacle.addImage (obstacleImg2);
-      //         break;
+       case 2: Obstacle.addImage (obstacleImg2);
+               break;
       // case 3: Obstacle.addImage (obstacleImg3);
       //         break;
       case 4: Obstacle.addImage (obstacleImg4);
@@ -120,6 +119,8 @@ function draw(){
     if(vampire===0){
       var rand= Math.round(random(1,4));
       Player.UpdateVampire (rand);
+      //UpdateVampire.addimage("vampImg1");
+
 
     }
     else {
