@@ -8,6 +8,8 @@ var database;
 
 var form, player, game;
 
+var bloodbank;
+
 var players, p1, p2, p3, p4;
 var track, car1_img, car2_img, car3_img, car4_img;
 
@@ -29,10 +31,6 @@ var obstacleImg1,obstacleImg2,obstacleImg3,obstacleImg4;
 
 var GirlImg, vampImg1;
 
-
-
-
-var vampire;
 
 var vampire = 0;
 
@@ -77,7 +75,7 @@ function setup(){
   game.getState();
   game.start();
 
-  for(i=0; i<5; i++){
+  for(i=0; i<20; i++){
     obsWidth = random(200,950)
     obsHeight = random(-height*4, height-300)
   
@@ -135,6 +133,8 @@ function draw(){
    if (gameState === 2 && finishedPlayers === 4 ) {
     game.displayRanks();
    }
+
+  
   
   }
  
