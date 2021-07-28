@@ -5,7 +5,8 @@ class Player {
     this.xPos = 0;
     this.name = null;
     this.place = 0;  
-    this.life = 3;
+    this.life = 1;
+    this.leftright = 0;
   }
 
   getCount(){
@@ -19,6 +20,7 @@ class Player {
     var playervampRef = database.ref('vampirePlayer');
     playervampRef.on("value",(data)=>{
       vampire = data.val();
+      console.log("Vampire" + vampire);
     })
   }
 
@@ -35,7 +37,8 @@ class Player {
       distance:this.distance,
       place: this.place,
       xPos: this.xPos,
-      life : this.life
+      life : this.life,
+      leftright : this.leftright
     });
   }
 

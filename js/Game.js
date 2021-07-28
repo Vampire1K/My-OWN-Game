@@ -30,18 +30,34 @@ class Game {
             }
         
             p1 = createSprite(100,200);
-            //p1.debug = true;
-            //p1.addImage("car1",car1_img);
+            p1.scale=0.5;
+            p1.addImage(girlImg);
             p2 = createSprite(300,200);
-            //p2.debug = true;
-            //p2.addImage("car2",car2_img);
+            p2.scale=0.5;
+            p2.addImage(girlImg);
             p3 = createSprite(500,200);
-           //p3.debug = true;
-           // p3.addImage("car3",car3_img);
+            p3.scale=0.5;
+            p3.addImage(girlImg);
             p4 = createSprite(700,200);
-            //p4.debug = true;
-            //p4.addImage("car4",car4_img);
+            p4.scale=0.5;
+            p4.addImage(girlImg);
+
+            
+
+
             players = [p1, p2,p3, p4]; 
+            Player.getVampire();
+            // for(var vamp in players){
+            //   var gamePlayer = "p"+vampire;
+            //   console.log(players[vamp]);
+            //   if(gamePlayer===players[vamp]){
+            //     console.log(vampimg1);
+            //     players[vamp].addImage(vampimg1);
+            //   }
+            //   else{
+            //     players[vamp].addImage(girlImg);
+            //   }
+            // }
 
             incidentata = false;
           }
@@ -92,7 +108,7 @@ class Game {
                
               }
         
-            }
+            }/*
         
             
             if(player.distance < 4000){  // before end pointyVel
@@ -175,8 +191,7 @@ class Game {
       // ------------------------------------------Vampire play-------------------------------------------//
 
       play(){
-       console.log("ola");
-       
+      
         
        form.hide();
         
@@ -211,20 +226,47 @@ class Game {
           textSize(15);
           text(allPlayers[plr].name, displayWidth-250,display_position)
           var bloodX =displayWidth-300;
-          for(var b=0;b<allPlayers[plr].life;b++){
-            var bloodbank = createSprite(bloodX,display_position,20,20);
-            bloodX += 50;
+
+          if(allPlayers[plr].life===1){
+            bloodbank = createSprite(bloodX,display_position,20,20);
+            bloodbank.shapeColor="green";
+          }
+          else {
+            bloodbank = createSprite(bloodX,display_position,20,20);
             bloodbank.shapeColor="red";
           }
         }
   
       }
-  
+       
+      //comment243 to 46
       if(keyIsDown(UP_ARROW) && player.index !== null){
         player.distance +=50
         player.update();
       }
-  
+
+      
+      //uncomment
+      /*if(keyIsDown(38) && player.index !== null){
+         player.distance +=50 // y coordinate - upwards direction
+                  if(keyIsDown(37)){
+                      player.leftright -=20;
+                  }
+                  if(keyIsDown(39)){
+                      player.leftright +=20;
+                  }
+        player.update();
+      }*/
+            
+      // IF CONDITION - CHECK IF VAMPIREPLAYER !== PLAYER.index
+          if(vampirePlayer !== Player.index)
+
+      // CHECK IF PLAYER TOUCHES OBSTACLE - PLAYER.LIFE=0;
+      if(player.isTouching(Obstacle)){
+        player.life= 0;
+      }
+    
+      
       drawSprites();
   }
 
